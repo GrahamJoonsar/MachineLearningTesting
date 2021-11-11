@@ -1,4 +1,4 @@
-import random
+import random, time
 
 class Word:
     def __init__(self, word, type):
@@ -6,6 +6,8 @@ class Word:
         self.type = type
 
 all_words = []
+
+stime = time.time()
 
 happy_file = open("happy.txt", 'r')
 sad_file = open("sad.txt", 'r')
@@ -49,7 +51,7 @@ class Organism:
                     if i != l-1:
                         happy_score += self.future_chars[w.word[i+1]]
                 except:
-                    print(c + " is unknown")
+                    print(w.word[i] + " is unknown")
             if (happy_score > 0 and w.type == "h") or (happy_score <= 0 and w.type == "s"):
                 self.score += 1
     def get_type(self, word):
@@ -65,7 +67,7 @@ class Organism:
 
 organisms = []
 
-onum = 25
+onum = 50
 
 for i in range(onum):
     organisms.append(Organism())
@@ -101,6 +103,7 @@ for o in range(len(organisms)):
         i = o
 
 print(str(mx) + " / " + str(len(all_words)))
+print("TIME: " + str(time.time() - stime))
 
 while True:
     word = input("Enter a word: ")

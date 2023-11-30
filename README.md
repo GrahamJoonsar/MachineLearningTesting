@@ -1,2 +1,2 @@
-# MachineLeariningTesting
+# MachineLearningTesting
 Fiddling with ML
